@@ -127,6 +127,7 @@
 	</dependencies>
 
 	<build>
+		<testSourceDirectory>src/test/java/com/revature/services</testSourceDirectory>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
