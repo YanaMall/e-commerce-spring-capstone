@@ -44,11 +44,10 @@ jobs:
       uses: actions/setup-java@v3
       with:
         java-version: '11'
-        distribution: 'temurin'
+        distribution: 'adopt' #temurin
         cache: maven
     - name: Test with Maven
-      run: mvn --batch-mode -Dmaven.test.failure.ignore=true test
-      # mvn -e clean test
+      run: mvn -e clean test
       
   integration-tests-after-build:
     runs-on: ubuntu-latest
@@ -59,7 +58,7 @@ jobs:
       uses: actions/setup-java@v3
       with:
         java-version: '11'
-        distribution: 'temurin'
+        distribution: 'adopt' #temurin
         cache: maven
     - name: Test with Maven
       run: mvn --batch-mode -Dmaven.test.failure.ignore=true test
