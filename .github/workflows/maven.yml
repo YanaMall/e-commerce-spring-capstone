@@ -44,7 +44,7 @@ jobs:
       uses: actions/setup-java@v3
       with:
         java-version: '11'
-        distribution: 'temurin'
+        distribution: 'adopt' #temurin
         cache: maven
     - name: Test with Maven
       run: mvn -e clean test
@@ -58,7 +58,7 @@ jobs:
       uses: actions/setup-java@v3
       with:
         java-version: '11'
-        distribution: 'temurin'
+        distribution: 'adopt' #temurin
         cache: maven
     - name: Test with Maven
       run: mvn --batch-mode -Dmaven.test.failure.ignore=true test
@@ -74,6 +74,6 @@ jobs:
       if: always()
       with:
           name: Maven Tests
-          path: target/surefire-reports/*.xml
+          path: .github/*.xml
           reporter: java-junit
           fail-on-error: true
