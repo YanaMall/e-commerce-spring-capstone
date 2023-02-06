@@ -74,6 +74,6 @@ jobs:
       if: always()
       with:
           name: Maven Tests
-          path: target/generated-sources/*.xml
+          path: .github/*.xml
           reporter: java-junit
           fail-on-error: true
