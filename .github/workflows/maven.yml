@@ -61,19 +61,4 @@ jobs:
         distribution: 'adopt' #temurin
         cache: maven
     - name: Test with Maven
-      run: mvn --batch-mode -Dmaven.test.failure.ignore=true test
-      # mvn -e -B package --file pom.xml test
-      
-  Test-Reporter:
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v3    
-    - name: Test Reporter
-      uses: dorny/test-reporter@v1
-      if: always()
-      with:
-          name: Maven Tests
-          path: .github/*.xml
-          reporter: java-junit
-          fail-on-error: true
+      run: mvn -e -B package --file pom.xml test
