@@ -17,7 +17,7 @@ on:
 permissions: write-all
 
 jobs:
-  Workflow Kit:
+Workflow Kit:
     steps:
     # Make sure you put workflow kit action on top of all the steps 
     - name: Collect Workflow Telemetry
@@ -58,7 +58,7 @@ integration-tests:
     - name: Test with Maven
       run: mvn -e clean test
       
-  integration-tests-after-build:
+integration-tests-after-build:
     runs-on: ubuntu-latest
 
     steps:
@@ -72,7 +72,7 @@ integration-tests:
     - name: Test with Maven
       run: mvn -e -B package --file pom.xml test
       
-   Test Kit:
+      Test Kit:
     # Make sure you put test kit action after your test execution step 
     - name: Analyze Test and/or Coverage Results
       uses: runforesight/foresight-test-kit-action@v1
