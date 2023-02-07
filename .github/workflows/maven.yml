@@ -11,8 +11,18 @@ permissions: write-all
 jobs:
   build:
     runs-on: ubuntu-latest
+    
+    # ...
 
-    steps:
+	  steps:
+    # Make sure you put workflow kit action on top of all the steps 
+    - name: Collect Workflow Telemetry
+      uses: runforesight/foresight-workflow-kit-action@v1
+      if: ${{ always() }}
+      with:
+        api_key: f0c57974-86c9-4ce0-aae9-9f6f8d725803
+    
+    #steps:
     - uses: actions/checkout@v3
     - name: Set up JDK 11
       uses: actions/setup-java@v3
@@ -54,3 +64,17 @@ jobs:
         cache: maven
     - name: Test with Maven
       run: mvn -e -B package --file pom.xml test
+
+  # ...
+ 
+    # Make sure you put test kit action after your test execution step 
+    - name: Analyze Test and/or Coverage Results
+      uses: runforesight/foresight-test-kit-action@v1
+      if: ${{ always() }}
+      with:
+        api_key: f0c57974-86c9-4ce0-aae9-9f6f8d725803
+        test_format: JUNIT
+        test_framework: JUNIT
+        test_path: <test_results_path_optional>
+        coverage_format: JACOCO/XML
+        coverage_path: <coverage_results_path_optional>
